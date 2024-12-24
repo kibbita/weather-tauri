@@ -35,30 +35,38 @@
 
   <!-- Elemento 1: Primer prenda de ropa -->
   <div *ngIf="!loading" class="hourly-item">
-    <span class="material-icons" [ngClass]="clothingSuggestions[0]">
-      {{ clothingSuggestions[0] }}
-    </span>
+    <img *ngIf="clothingSuggestions[0] === 'camisa-sin-mangas'" src="../assets/clothing_ico/camisa-sin-mangas.png" alt="Camisa sin mangas" height="80px" style="filter: invert(1) grayscale(100%)" />
+    <img *ngIf="clothingSuggestions[0] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+    <img *ngIf="clothingSuggestions[0] === 'chaqueta-con-bolsillos'" src="../assets/clothing_ico/chaqueta-con-bolsillos.png" alt="Chaqueta con bolsillos" height="80px" style="filter: invert(1) grayscale(100%)" />
+    <img *ngIf="clothingSuggestions[0] === 'gorro-de-invierno'" src="../assets/clothing_ico/gorro-de-invierno.png" alt="Gorro de invierno" height="80px" style="filter: invert(1) grayscale(100%)" />
+    <img *ngIf="clothingSuggestions[0] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
+    <img *ngIf="clothingSuggestions[0] === 'pantalones-cortos'" src="../assets/clothing_ico/pantalones-cortos.png" alt="Pantalones cortos" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+    <img *ngIf="clothingSuggestions[0] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
   </div>
 
-  <!-- Elemento 2: Segunda prenda de ropa -->
-  <div *ngIf="!loading" class="hourly-item">
-    <span class="material-icons" [ngClass]="clothingSuggestions[1]">
-      {{ clothingSuggestions[1] }}
-    </span>
-  </div>
-
-  <!-- Elemento 3: Tercer prenda de ropa -->
-  <div *ngIf="!loading" class="hourly-item">
-    <span class="material-icons" [ngClass]="clothingSuggestions[2]">
-      {{ clothingSuggestions[2] }}
-    </span>
-  </div>
-
-  <!-- Elemento 4: Cuarta prenda de ropa -->
-  <div *ngIf="!loading" class="hourly-item">
-    <span class="material-icons" [ngClass]="clothingSuggestions[3]">
-      {{ clothingSuggestions[3] }}
-    </span>
-  </div>
+    <!-- Elemento 2: Segunda prenda de ropa -->
+    <div *ngIf="!loading" class="hourly-item">
+      <img *ngIf="clothingSuggestions[1] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[1] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[1] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[1] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px" />
+    </div>
+  
+    <!-- Elemento 3: Tercer prenda de ropa -->
+    <div *ngIf="!loading" class="hourly-item">
+      <img *ngIf="clothingSuggestions[2] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+      <img *ngIf="clothingSuggestions[2] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[2] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[2] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px" style="filter: invert(1) grayscale(100%)" />
+    </div>
+  
+    <!-- Elemento 4: Cuarta prenda de ropa -->
+    <div *ngIf="!loading" class="hourly-item">
+      <img *ngIf="clothingSuggestions[3] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+      <img *ngIf="clothingSuggestions[3] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+      <img *ngIf="clothingSuggestions[3] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+      <img *ngIf="clothingSuggestions[3] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+    </div>
+  
 </div>
 

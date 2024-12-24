@@ -70,49 +70,71 @@ export class AppComponent implements OnInit {
     const windSpeed = currentWeather?.wind_speed_10m;
     const weatherCode = currentWeather?.weathercode;
     const humidity = this.currentWeather?.hourly?.relative_humidity_2m[0];
-
+  
     let clothing: string[] = [];
-
+  
     if (temperature && windSpeed !== undefined && weatherCode !== undefined && humidity !== undefined) {
       
-      if (temperature < 10) { // Frío
-        clothing = ['winter', 'pants', 'boots', 'scarf'];  // Ropa más abrigada
+      // **Muy frío (< 0°C)**
+      if (temperature < 0) {
+        clothing = ['sueter', 'pantalones', 'par-de-guantes', 'gorro-de-invierno'];
         if (windSpeed > 15) {
-          clothing = ['winter', 'pants', 'boots', 'scarf', 'gloves']; // Agregar guantes si hace viento
+          clothing.push('par-de-guantes');  // Agregar guantes si hace viento
         }
-      } else if (temperature >= 10 && temperature <= 20) { // Templado/Frío moderado
-        clothing = ['sweater', 'pants', 'boots', 'scarf'];
-        if (windSpeed > 10) {
-          clothing.push('jacket');  // Si hay viento, agregar chaqueta
-        }
-      } else if (temperature > 20 && temperature <= 30) { // Templado/Cálido
-        clothing = ['shirt', 'pants', 'sandals', 'sunny'];
-        if (humidity > 70) {
-          clothing = ['shirt', 'shorts', 'sandals', 'sunny']; // Si está muy húmedo, ropa ligera
-        }
-      } else if (temperature > 30) { // Calor
-        clothing = ['tank_top', 'shorts', 'sandals', 'sunny'];
-        if (windSpeed > 15) {
-          clothing.push('hat'); // Agregar sombrero si hay mucho viento
-        }
+      } 
+      
+      // **Frío extremo (0°C - 10°C)**
+      else if (temperature >= 0 && temperature < 10) {
+        clothing = ['sueter', 'pantalones', 'botas', 'gorro-de-invierno'];
       }
-
-      if (humidity > 70) {
-        clothing.push('light_clothing');  // Ropa ligera para alta humedad
+  
+      // **Frío moderado (10°C - 15°C)**
+      else if (temperature >= 10 && temperature < 15) {
+        clothing = ['sueter', 'pantalones', 'botines', 'chaqueta-con-bolsillos'];
       }
-
-      // Añadir capa si hay lluvias ligeras
+  
+      // **Templado frío (15°C - 20°C)**
+      else if (temperature >= 15 && temperature < 20) {
+        clothing = ['camiseta', 'pantalones', 'chaqueta-con-bolsillos', 'botines'];
+      }
+  
+      // **Templado (20°C - 25°C)**
+      else if (temperature >= 20 && temperature < 25) {
+        clothing = ['camiseta', 'pantalones', 'sandals-pair', 'gorro'];
+      }
+  
+      // **Caluroso (25°C - 30°C)**
+      else if (temperature >= 25 && temperature < 30) {
+        clothing = ['camiseta', 'pantalones-cortos', 'sandals-pair', 'gafas-de-sol'];
+      }
+  
+      // **Muy caluroso (30°C - 35°C)**
+      else if (temperature >= 30 && temperature < 35) {
+        clothing = ['camisa-sin-mangas', 'pantalones-cortos', 'sandals-pair', 'sombrero'];
+      }
+  
+      else if (temperature > 35) {
+        clothing = ['camisa-sin-mangas', 'pantalones-cortos', 'sandals-pair', 'sombrero'];
+      }
+  
       if (weatherCode >= 5 && weatherCode <= 6) {
-        clothing.push('umbrella');  // Lluvia ligera, agregar paraguas
+        clothing.push('umbrella');
       }
-
-      // Si las condiciones no cubren, añadir íconos básicos
+  
+      if (windSpeed > 20) {
+        clothing.push('chaqueta-con-bolsillos'); 
+      }
+  
+      if (humidity > 70) {
+        clothing.push('ropa-ligera');  
+      }
+  
       while (clothing.length < 4) {
-        clothing.push('cloud'); // Agregar "cloud" si no hay suficientes sugerencias
+        clothing.push('cloud'); 
       }
-
+  
       this.clothingSuggestions = clothing;
+      console.log('Clothing Suggestions:', this.clothingSuggestions);
     }
   }
-
 }
