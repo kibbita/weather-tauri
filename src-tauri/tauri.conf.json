@@ -13,16 +13,21 @@
     "windows": [
       {
         "title": "weather-tauri",
-        "width": 800,
-        "height": 600,
+        "width": 1200,
+        "height": 800,
         "resizable": true,
-        "fullscreen": false
+        "fullscreen": false,
+        "transparent": false,
+        "titleBarStyle": "Transparent",
+        "decorations":false
       }
     ],
+
     "security": {
       "csp": null
     }
   },
+  
   "bundle": {
     "active": true,
     "targets": "all",

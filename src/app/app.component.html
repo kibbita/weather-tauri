@@ -1,72 +1,83 @@
-<mat-card class="weather-card">
-  <mat-card-header>
-    <mat-card-title>{{ cityName }}</mat-card-title>
-  </mat-card-header>
-
-  <mat-card-content class="weather-content">
-    <div *ngIf="loading" class="spinner-container">
-      <mat-spinner color="accent" diameter="150"></mat-spinner>
-    </div>
-
-    <div *ngIf="!loading">
-      <div class="temperature">
-        <h1>{{ currentWeather?.current?.temperature_2m }}°C</h1>
-      </div>
-
-      <img *ngIf="currentWeather?.current?.weathercode === 0" src="../assets/weather_ico/0.png" height="150px">
-      <img *ngIf="currentWeather?.current?.weathercode >= 1 && currentWeather?.current?.weathercode <= 2" src="../assets/weather_ico/1_2.png" height="150px">
-      <img *ngIf="currentWeather?.current?.weathercode >= 3 && currentWeather?.current?.weathercode <= 4" src="../assets/weather_ico/3_4.png" height="150px">
-      <img *ngIf="currentWeather?.current?.weathercode >= 5 && currentWeather?.current?.weathercode <= 6" src="../assets/weather_ico/5_6.png" height="150px">
-      <img *ngIf="currentWeather?.current?.weathercode >= 7 && currentWeather?.current?.weathercode <= 8" src="../assets/weather_ico/7_8.png" height="150px">
-      <img *ngIf="currentWeather?.current?.weathercode === 9" src="../assets/weather_ico/9.png" height="150px">
-
-      <div class="weather-info" style="margin-bottom: 2rem;">
-        <span>{{ currentWeather?.current?.wind_speed_10m }} km/h Wind</span>
-        <span>{{ currentWeather?.hourly?.relative_humidity_2m[0] }}% Humidity</span>
-      </div>
-    </div>
-  </mat-card-content>
-</mat-card>
-
-<div class="hourly-card">
-  <div *ngIf="loading" class="spinner-container">
-    <mat-spinner style="margin-left: 20rem;" diameter="80"></mat-spinner>
+<div>
+  <div *ngIf="loading" class="spinner-container" >
+    <mat-spinner color="accent" diameter="150"></mat-spinner>
   </div>
-
-  <!-- Elemento 1: Primer prenda de ropa -->
-  <div *ngIf="!loading" class="hourly-item">
-    <img *ngIf="clothingSuggestions[0] === 'camisa-sin-mangas'" src="../assets/clothing_ico/camisa-sin-mangas.png" alt="Camisa sin mangas" height="80px" style="filter: invert(1) grayscale(100%)" />
-    <img *ngIf="clothingSuggestions[0] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
-    <img *ngIf="clothingSuggestions[0] === 'chaqueta-con-bolsillos'" src="../assets/clothing_ico/chaqueta-con-bolsillos.png" alt="Chaqueta con bolsillos" height="80px" style="filter: invert(1) grayscale(100%)" />
-    <img *ngIf="clothingSuggestions[0] === 'gorro-de-invierno'" src="../assets/clothing_ico/gorro-de-invierno.png" alt="Gorro de invierno" height="80px" style="filter: invert(1) grayscale(100%)" />
-    <img *ngIf="clothingSuggestions[0] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
-    <img *ngIf="clothingSuggestions[0] === 'pantalones-cortos'" src="../assets/clothing_ico/pantalones-cortos.png" alt="Pantalones cortos" height="80px"  style="filter: invert(1) grayscale(100%)"/>
-    <img *ngIf="clothingSuggestions[0] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
-  </div>
-
-    <!-- Elemento 2: Segunda prenda de ropa -->
-    <div *ngIf="!loading" class="hourly-item">
-      <img *ngIf="clothingSuggestions[1] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px" style="filter: invert(1) grayscale(100%)" />
-      <img *ngIf="clothingSuggestions[1] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
-      <img *ngIf="clothingSuggestions[1] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
-      <img *ngIf="clothingSuggestions[1] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px" />
-    </div>
-  
-    <!-- Elemento 3: Tercer prenda de ropa -->
-    <div *ngIf="!loading" class="hourly-item">
-      <img *ngIf="clothingSuggestions[2] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
-      <img *ngIf="clothingSuggestions[2] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
-      <img *ngIf="clothingSuggestions[2] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
-      <img *ngIf="clothingSuggestions[2] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px" style="filter: invert(1) grayscale(100%)" />
-    </div>
-  
-    <!-- Elemento 4: Cuarta prenda de ropa -->
-    <div *ngIf="!loading" class="hourly-item">
-      <img *ngIf="clothingSuggestions[3] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
-      <img *ngIf="clothingSuggestions[3] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px"  style="filter: invert(1) grayscale(100%)"/>
-      <img *ngIf="clothingSuggestions[3] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px"  style="filter: invert(1) grayscale(100%)"/>
-      <img *ngIf="clothingSuggestions[3] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px"  style="filter: invert(1) grayscale(100%)"/>
-    </div>
-  
 </div>
+
+<div #content *ngIf="!loading">
+  <mat-card class="weather-card">
+    <mat-card-header>
+      <mat-card-title>{{ cityName }}</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content class="weather-content">
+
+  
+      <div *ngIf="!loading">
+        <div class="temperature">
+          <h1>{{ currentWeather?.current?.temperature_2m }}°C</h1>
+        </div>
+  
+        <img *ngIf="currentWeather?.current?.weathercode === 0" src="../assets/weather_ico/0.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode >= 1 && currentWeather?.current?.weathercode <= 2" src="../assets/weather_ico/1_2.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode >= 3 && currentWeather?.current?.weathercode <= 4" src="../assets/weather_ico/3_4.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode >= 5 && currentWeather?.current?.weathercode <= 6" src="../assets/weather_ico/5_6.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode >= 7 && currentWeather?.current?.weathercode <= 8" src="../assets/weather_ico/7_8.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode === 9" src="../assets/weather_ico/9.png" height="150px">
+  
+        <div class="weather-info" style="margin-bottom: 2rem;">
+          <span>{{ currentWeather?.current?.wind_speed_10m }} km/h Wind</span>
+          <span>{{ currentWeather?.hourly?.relative_humidity_2m[0] }}% Humidity</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+  <div class="hourly-card">
+    <div *ngIf="loading" class="spinner-container">
+      <mat-spinner style="margin-left: 20rem;" diameter="80"></mat-spinner>
+    </div>
+  
+    <!-- Elemento 1: Primer prenda de ropa -->
+    <div *ngIf="!loading" class="hourly-item">
+      <img *ngIf="clothingSuggestions[0] === 'camisa-sin-mangas'" src="../assets/clothing_ico/camisa-sin-mangas.png" alt="Camisa sin mangas" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[0] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+      <img *ngIf="clothingSuggestions[0] === 'chaqueta-con-bolsillos'" src="../assets/clothing_ico/chaqueta-con-bolsillos.png" alt="Chaqueta con bolsillos" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[0] === 'gorro-de-invierno'" src="../assets/clothing_ico/gorro-de-invierno.png" alt="Gorro de invierno" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[0] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
+      <img *ngIf="clothingSuggestions[0] === 'pantalones-cortos'" src="../assets/clothing_ico/pantalones-cortos.png" alt="Pantalones cortos" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+      <img *ngIf="clothingSuggestions[0] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
+    </div>
+  
+      <!-- Elemento 2: Segunda prenda de ropa -->
+      <div *ngIf="!loading" class="hourly-item">
+        <img *ngIf="clothingSuggestions[1] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px" style="filter: invert(1) grayscale(100%)" />
+        <img *ngIf="clothingSuggestions[1] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
+        <img *ngIf="clothingSuggestions[1] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
+        <img *ngIf="clothingSuggestions[1] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px" />
+      </div>
+    
+      <!-- Elemento 3: Tercer prenda de ropa -->
+      <div *ngIf="!loading" class="hourly-item">
+        <img *ngIf="clothingSuggestions[2] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+        <img *ngIf="clothingSuggestions[2] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px" style="filter: invert(1) grayscale(100%)" />
+        <img *ngIf="clothingSuggestions[2] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px" style="filter: invert(1) grayscale(100%)" />
+        <img *ngIf="clothingSuggestions[2] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px" style="filter: invert(1) grayscale(100%)" />
+        <img *ngIf="clothingSuggestions[2] === 'chaqueta-con-bolsillos'" src="../assets/clothing_ico/chaqueta-con-bolsillos.png" alt="Gorro" height="80px" style="filter: invert(1) grayscale(100%)" />
+      </div>
+    
+      <!-- Elemento 4: Cuarta prenda de ropa -->
+      <div *ngIf="!loading" class="hourly-item">
+        <img *ngIf="clothingSuggestions[3] === 'camiseta'" src="../assets/clothing_ico/camiseta.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+        <img *ngIf="clothingSuggestions[3] === 'pantalones'" src="../assets/clothing_ico/pantalones.png" alt="Pantalones" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+        <img *ngIf="clothingSuggestions[3] === 'sandals-pair'" src="../assets/clothing_ico/sandals-pair.png" alt="Sandalias" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+        <img *ngIf="clothingSuggestions[3] === 'gorro'" src="../assets/clothing_ico/gorra.png" alt="Gorro" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+        <img *ngIf="clothingSuggestions[3] === 'botines'" src="../assets/clothing_ico/bota.png" alt="Bota" height="65px"  style="filter: invert(1) grayscale(100%); margin-top: 5px;"/>
+  
+      </div>
+    
+  </div>
+</div>
+
+
 

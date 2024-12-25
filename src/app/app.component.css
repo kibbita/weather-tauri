@@ -96,8 +96,20 @@
 }
 
 .spinner-container {
+
+  margin-top: 10rem;
   display: flex;
   justify-content: center; 
   align-items: center;    
   height: 100%;         
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.mat-card-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
 }

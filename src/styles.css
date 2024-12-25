@@ -3,7 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html {
-    background: linear-gradient(45deg, #2E335A, #1C1B33);
-
+    background: url('assets/gradient-purple-blue.jpg');
 }
 
+html {
+    background-color: rgba(0, 0, 0, 1); 
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+
+  
