@@ -18,13 +18,26 @@
           <h1>{{ currentWeather?.current?.temperature_2m }}°C</h1>
         </div>
   
+        <div *ngIf="isDayTime">
+
         <img *ngIf="currentWeather?.current?.weathercode === 0" src="../assets/weather_ico/0.png" height="150px">
         <img *ngIf="currentWeather?.current?.weathercode >= 1 && currentWeather?.current?.weathercode <= 2" src="../assets/weather_ico/1_2.png" height="150px">
         <img *ngIf="currentWeather?.current?.weathercode >= 3 && currentWeather?.current?.weathercode <= 4" src="../assets/weather_ico/3_4.png" height="150px">
         <img *ngIf="currentWeather?.current?.weathercode >= 5 && currentWeather?.current?.weathercode <= 6" src="../assets/weather_ico/5_6.png" height="150px">
         <img *ngIf="currentWeather?.current?.weathercode >= 7 && currentWeather?.current?.weathercode <= 8" src="../assets/weather_ico/7_8.png" height="150px">
         <img *ngIf="currentWeather?.current?.weathercode === 9" src="../assets/weather_ico/9.png" height="150px">
-  
+      </div>
+
+      <div *ngIf="!isDayTime">
+
+        <img *ngIf="currentWeather?.current?.weathercode === 0" src="../assets/weather_ico/night/0.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode >= 1 && currentWeather?.current?.weathercode <= 2" src="../assets/weather_ico/night/1_2.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode >= 3 && currentWeather?.current?.weathercode <= 4" src="../assets/weather_ico/night/3_4.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode >= 5 && currentWeather?.current?.weathercode <= 6" src="../assets/weather_ico/night/5_6.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode >= 7 && currentWeather?.current?.weathercode <= 8" src="../assets/weather_ico/night/7_8.png" height="150px">
+        <img *ngIf="currentWeather?.current?.weathercode === 9" src="../assets/weather_ico/night/9.png" height="150px">
+      </div>
+
         <div class="weather-info" style="margin-bottom: 2rem;">
           <span>{{ currentWeather?.current?.wind_speed_10m }} km/h Wind</span>
           <span>{{ currentWeather?.hourly?.relative_humidity_2m[0] }}% Humidity</span>

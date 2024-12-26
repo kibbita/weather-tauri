@@ -24,11 +24,16 @@ export class AppComponent implements OnInit {
   loading: boolean = true; 
   cityName: any;
   clothingSuggestions: string[] = [];
-
+  isDayTime: boolean = true;
 
   constructor(private weatherService: WeatherService){}
   ngOnInit(): void {
     this.getGeolocation();
+    const currentHour = new Date().getHours();
+
+    if (currentHour >= 20){
+      this.isDayTime = false;
+    }
   }
   
   getGeolocation(): void {
