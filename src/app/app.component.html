@@ -91,8 +91,13 @@
         <img *ngIf="clothingSuggestions[3] === 'gafas-de-sol'" src="../assets/clothing_ico/sunglasses.png" alt="Gafas" height="100px"  style="filter: invert(1) grayscale(100%); "/>
   
       </div>
-    
+
+      <div *ngIf="!loading && clothingSuggestions[4] === 'umbrella'" class="hourly-item">
+        <img src="../assets/clothing_ico/umbrella.png" alt="Camiseta" height="80px"  style="filter: invert(1) grayscale(100%)"/>
+    </div>
   </div>
+
+
 </div>
 
 
