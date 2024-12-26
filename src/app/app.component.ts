@@ -126,14 +126,6 @@ export class AppComponent implements OnInit {
         clothing.push('umbrella');
       }
   
-      if (windSpeed > 20) {
-        clothing.push('chaqueta-con-bolsillos'); 
-      }
-  
-      if (humidity > 70) {
-        clothing.push('ropa-ligera');  
-      }
-  
       while (clothing.length < 4) {
         clothing.push('cloud'); 
       }
