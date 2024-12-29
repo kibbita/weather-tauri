@@ -2,9 +2,9 @@
   "$schema": "https://schema.tauri.app/config/2.0.0-rc",
   "productName": "weather-tauri",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "kibba.dev",
   "build": {
-    "frontendDist": "../dist",
+    "frontendDist": "../dist/weather-tauri/browser",
     "devUrl": "http://localhost:4200",
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build"
